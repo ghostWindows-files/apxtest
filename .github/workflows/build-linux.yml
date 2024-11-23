@@ -3,10 +3,7 @@ name: Build Linux AMD64 Binary
 on:
   push:
     branches:
-      - main  # 当 main 分支有代码变更时触发
-  pull_request:
-    branches:
-      - main  # 当有 PR 提交到 main 分支时触发
+      - main  # 仅在代码推送到 main 分支时触发
   workflow_dispatch: # 支持手动触发工作流
 
 jobs:
