@@ -54,11 +54,12 @@ type Result struct {
 }
 
 func errorResponse(w http.ResponseWriter, code int, msg string) {
-	w.Header().Set("content-type", "text/json")
-	res, _ := json.Marshal(Result{Code: code, Msg: msg})
-	w.WriteHeader(200)
-	_, _ = w.Write(res)
+    w.Header().Set("content-type", "application/json;charset=UTF-8")
+    res, _ := json.Marshal(Result{Code: code, Msg: msg})
+    w.WriteHeader(code) // 使用传入的状态码
+    _, _ = w.Write(res)
 }
+
 
 func downHandle(w http.ResponseWriter, r *http.Request) {
 	sign := r.URL.Query().Get("sign")
